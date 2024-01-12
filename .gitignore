@@ -1,0 +1,5 @@
+reports/*.csv
+reports/*.pdf
+venv
+\./venv
+config.yaml

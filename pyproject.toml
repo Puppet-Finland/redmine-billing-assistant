@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "redreport"
+version = "1.0.0"
+description = "Redmine Billing Assistant for creating PDFs"
+authors = ["Ricky Cousins"]
+license = "BSD-2-Clause"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-redmine = "^2.4.0"
+pyyaml = "^6.0.1"
+pandas = "^2.1.0"
+pdfkit = "^1.0.0"
+weasyprint = "^59.0"
+pypandoc = "^1.12"
+jinja2 = "^3.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

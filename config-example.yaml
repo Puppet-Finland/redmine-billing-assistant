@@ -1,0 +1,3 @@
+API_KEY: "12969b491059cc67b7gf81da25f34g823d4df4ef"
+REDMINE_SITE: "https://redmine.example.com"
+RE_WHITELIST: "(client1|hourly)"
