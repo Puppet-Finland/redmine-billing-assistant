@@ -5,6 +5,8 @@ If no entries are found, the project is ignored.
 
 ## Examples Using Podman (Recommended)
 Make sure to mount the reports dir as a volume to see reports.
+Note: When using pod_run.sh, you can export an env var $REDREP_REPORTS_DIR and
+the script will mount that dir with the internal app reports dir.
 
 ### Build Image
     podman build . -t redrep
@@ -17,6 +19,9 @@ Make sure to mount the reports dir as a volume to see reports.
 
 ### List All Available projects
     podman run redrep -l
+
+### Or use the pod_run.sh script
+    pod_run.sh -m 3 -y 2023 -p client1
 
 ## How to get API Key from redmine
 The API key can be found under 'my account' on the right panel.
