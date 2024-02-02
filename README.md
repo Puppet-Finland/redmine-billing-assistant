@@ -21,7 +21,14 @@ the script will mount that dir with the internal app reports dir.
     podman run redrep -l
 
 ### Or use the pod_run.sh script
-    pod_run.sh -m 3 -y 2023 -p client1
+
+Define a specific project pattern:
+
+    ./pod_run.sh -m 3 -y 2023 -p client1
+
+Use the default patterns from config.yaml:
+
+    ./pod_run.sh -m 1 -y 2024
 
 ## How to get API Key from redmine
 The API key can be found under 'my account' on the right panel.
