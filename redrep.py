@@ -15,8 +15,9 @@ class RedReport:
     # NOTE: datestring = YYYY-MM-DD
     reports_path = "./reports"
     rate_limit = 1500
-    def __init__(self, config, year):
+    def __init__(self, config, year, month):
         self.year = year
+        self.month = month
         self.API_KEY = config['API_KEY']
         self.RM_URL = config['REDMINE_SITE']
         self.redmine = Redmine(self.RM_URL, key=self.API_KEY)
@@ -63,7 +64,7 @@ class RedReport:
         html_title = f"<h2><center>{project} - {month.title()} {self.year}</center></h2>" 
         html = html_title + html1 + '<br /><br />' + html2
         # HTML(string=html, encoding="utf-8").write_pdf(f"./reports/{month}-{project}.pdf")
-        HTML(string=html, encoding="utf-8").write_pdf(target=f"./reports/{month}-{project.identifier}.pdf", stylesheets=[CSS('bootstrap.css')])
+        HTML(string=html, encoding="utf-8").write_pdf(target=f"./reports/{self.year}-{self.month.zfill(2)}_{project.identifier.title()}.pdf", stylesheets=[CSS('bootstrap.css')])
 
 
     def get_entries(self, from_date: str, to_date: str, 
@@ -92,7 +93,7 @@ class RedReport:
         lastday, month = self._get_last_day(m)
         from_date = f"{self.year}-{month}-01"
         to_date = f"{self.year}-{month}-{lastday}"
-        report = f"{month}-{p_id}-report.csv"
+        report = f"{self.year}-{month}_{p_id.title()}-Report.csv"
         entries = self.get_entries(from_date, to_date, p_id)
         if len(entries) == 0: 
             print(f"No entries for '{project}' in {month_name}")
@@ -138,7 +139,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    r = RedReport(config, args.year)
+    r = RedReport(config, args.year, args.month)
 
     if args.list_projects:
         r.list_all_projects()
