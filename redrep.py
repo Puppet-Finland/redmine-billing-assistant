@@ -39,8 +39,13 @@ class RedReport:
 
     def list_all_projects(self):
         projects = self.redmine.project.all()
+        items = []
+
         for p in projects:
-            print(p)
+            items.append((p.name, p.identifier))
+
+        df = pd.DataFrame(items, columns=['Name', 'ID'])
+        print(df.to_string(index=False))
 
 
     def convert_file(self, f: str, month: str, project):
