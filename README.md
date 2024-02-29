@@ -20,6 +20,8 @@ the script will mount that dir with the internal app reports dir.
 ### List All Available projects
     podman run redrep -l
 
+Client ID shown is what is needed for the *-p* switch.
+
 ### Or use the pod_run.sh script
 
 Define a specific project pattern:
